@@ -1,4 +1,3 @@
-import 'package:carbon/core/user/user_store.dart';
 import 'package:carbon/locator.dart';
 import 'package:mobx/mobx.dart';
 

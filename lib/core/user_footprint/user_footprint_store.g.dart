@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'user_store.dart';
+part of 'user_footprint_store.dart';
 
 // **************************************************************************
 // StoreGenerator
@@ -8,4 +8,4 @@ part of 'user_store.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars
 
-mixin _$UserStore on _UserStore, Store {}
+mixin _$UserFootprintStore on _UserFootprintStore, Store {}
