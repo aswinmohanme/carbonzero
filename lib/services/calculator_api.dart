@@ -18,10 +18,22 @@ class CalculatorApi {
     return parseXmlToJson(xmlResponse);
   }
 
+  static computeFootprint(inputs) async {
+    var uri = new Uri.https(BASE_URL, API_URL, {"op": "compute_footprint"});
+    var xmlResponse = await _httpClient.post(uri,
+        headers: {
+          "X-DEV-TOKEN": APP_TOKEN,
+          "Accept": "application/x-www-form-urlencoded; charset=UTF-8"
+        },
+        body: inputs);
+    return parseXmlToJson(xmlResponse);
+  }
+
   static parseXmlToJson(xmlData) {
     var xml2json = new Xml2Json();
     xml2json.parse(xmlData.body);
-    var jsondata = xml2json.toGData();
-    return json.decode(jsondata);
+    var jsondata = xml2json.toParker();
+    return json.decode(jsondata,
+        reviver: (key, value) => value == null ? "" : value);
   }
 }
