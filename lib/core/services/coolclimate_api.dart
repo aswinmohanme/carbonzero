@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:xml2json/xml2json.dart';
 
-class CalculatorApi {
+class CoolClimateApi {
   static const String BASE_URL = 'coolclimate.berkeley.edu';
   static const String API_URL = '/calculators/household/api.php';
   static const String APP_TOKEN = 'DPP6zZDkSQAlRKfQ-iWgdg';
