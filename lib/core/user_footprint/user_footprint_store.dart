@@ -25,7 +25,7 @@ abstract class _UserFootprintStore with Store {
       "input_size": "3"
     });
     defaultBehaviours =
-        ObservableMap.linkedHashMapFrom(defaultBehavioursHashMap);
+        ObservableMap.linkedHashMapFrom(defaultBehavioursHashMap["responses"]);
     isLoading = false;
   }
 
