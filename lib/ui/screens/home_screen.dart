@@ -4,7 +4,6 @@ import 'package:carbon/ui/components/screen.dart';
 import 'package:carbon/ui/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:charcode/ascii.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -26,6 +25,10 @@ class _HomeScreenState extends State<HomeScreen> {
     return Observer(
       builder: (BuildContext context) => Screen(
         isLoading: userFootprintStore.isLoading,
+        errorMessage: userFootprintStore.errorMessage,
+        errorRectifyAction: () {
+          userFootprintStore.fetchResults();
+        },
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -63,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             Text(
-              "Today",
+              "Actions",
               style: textTheme.display2,
             ),
           ],

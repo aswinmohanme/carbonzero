@@ -14,7 +14,7 @@ abstract class _UserFootprintStore with Store {
   @observable
   String errorMessage = "";
   @observable
-  bool isLoading = false;
+  bool isLoading = true;
 
   @computed
   bool get hasBehaviours => behaviours != emptyResponse;
@@ -24,7 +24,7 @@ abstract class _UserFootprintStore with Store {
   bool get hasErrorOccured => errorMessage.isNotEmpty;
 
   @computed
-  get currentFootprint => results["result_grand_total"];
+  get currentFootprint => hasResults ? results["result_grand_total"] : "";
 
   @action
   fetchBehaviours() async {
@@ -36,6 +36,8 @@ abstract class _UserFootprintStore with Store {
   @action
   fetchResults() async {
     isLoading = true;
+    errorMessage = "";
+
     try {
       if (!hasBehaviours) await fetchBehaviours();
       final resultsHashMap = await ApiService.getResults(behaviours);

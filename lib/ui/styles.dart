@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 // rem unit size
-const rem = 16.0;
+const rem = 14.0;
 
 // Colors
 Color lightColor = Colors.white;

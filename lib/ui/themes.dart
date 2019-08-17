@@ -19,6 +19,7 @@ TextTheme _buildCarbonZeroTextTheme(TextTheme textTheme) {
   return textTheme
       .copyWith(
           body1: textTheme.body1.copyWith(fontSize: text_lg),
+          button: textTheme.button.copyWith(fontSize: text_base),
           headline: textTheme.headline.copyWith(fontSize: text_2xl),
           caption: textTheme.subtitle.copyWith(fontSize: text_sm),
           subhead: textTheme.subtitle.copyWith(fontSize: text_lg),
