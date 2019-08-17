@@ -14,6 +14,12 @@ mixin _$UserFootprintStore on _UserFootprintStore, Store {
   @override
   bool get hasResults =>
       (_$hasResultsComputed ??= Computed<bool>(() => super.hasResults)).value;
+  Computed<bool> _$hasErrorOccuredComputed;
+
+  @override
+  bool get hasErrorOccured => (_$hasErrorOccuredComputed ??=
+          Computed<bool>(() => super.hasErrorOccured))
+      .value;
 
   final _$defaultBehavioursAtom =
       Atom(name: '_UserFootprintStore.defaultBehaviours');
@@ -31,6 +37,23 @@ mixin _$UserFootprintStore on _UserFootprintStore, Store {
       super.defaultBehaviours = value;
       _$defaultBehavioursAtom.reportChanged();
     }, _$defaultBehavioursAtom, name: '${_$defaultBehavioursAtom.name}_set');
+  }
+
+  final _$errorMessageAtom = Atom(name: '_UserFootprintStore.errorMessage');
+
+  @override
+  String get errorMessage {
+    _$errorMessageAtom.context.enforceReadPolicy(_$errorMessageAtom);
+    _$errorMessageAtom.reportObserved();
+    return super.errorMessage;
+  }
+
+  @override
+  set errorMessage(String value) {
+    _$errorMessageAtom.context.conditionallyRunInAction(() {
+      super.errorMessage = value;
+      _$errorMessageAtom.reportChanged();
+    }, _$errorMessageAtom, name: '${_$errorMessageAtom.name}_set');
   }
 
   final _$isLoadingAtom = Atom(name: '_UserFootprintStore.isLoading');
