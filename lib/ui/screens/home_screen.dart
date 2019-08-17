@@ -16,7 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    userFootprintStore.fetchDefaultBehaviours();
+    userFootprintStore.fetchResults();
   }
 
   @override
@@ -41,9 +41,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       Container(
                         padding: EdgeInsets.only(top: s_1),
-                        child: Text(
-                          "16.32",
-                          style: Theme.of(context).textTheme.display2,
+                        child: Observer(
+                          builder: (BuildContext context) {
+                            return Text(
+                              userFootprintStore.currentFootprint,
+                              style: Theme.of(context).textTheme.display3,
+                            );
+                          },
                         ),
                       ),
                     ],

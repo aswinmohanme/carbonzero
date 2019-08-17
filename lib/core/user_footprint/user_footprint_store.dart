@@ -9,14 +9,24 @@ abstract class _UserFootprintStore with Store {
   @observable
   ObservableMap<String, dynamic> defaultBehaviours = emptyResponse;
   @observable
+  ObservableMap<String, dynamic> results = emptyResponse;
+
+  @observable
   String errorMessage = "";
   @observable
   bool isLoading = false;
 
   @computed
-  bool get hasResults => defaultBehaviours != emptyResponse;
+  bool get hasDefaultBehaviours => defaultBehaviours != emptyResponse;
+  @computed
+  bool get hasResults => results != emptyResponse;
   @computed
   bool get hasErrorOccured => errorMessage.isNotEmpty;
+
+  @computed
+  get currentFootprint {
+    return hasResults ? results["result_grand_total"] : "-1.0";
+  }
 
   @action
   fetchDefaultBehaviours() async {
@@ -26,6 +36,19 @@ abstract class _UserFootprintStore with Store {
           await ApiService.getDefaultResultsForDefaultLocation();
       defaultBehaviours =
           ObservableMap.linkedHashMapFrom(defaultBehavioursHashMap);
+    } catch (error) {
+      errorMessage = "A network error occured, please check your connection";
+    }
+    isLoading = false;
+  }
+
+  @action
+  fetchResults() async {
+    isLoading = true;
+    if (!hasDefaultBehaviours) await fetchDefaultBehaviours();
+    try {
+      final resultsHashMap = await ApiService.getResults(defaultBehaviours);
+      results = ObservableMap.linkedHashMapFrom(resultsHashMap);
     } catch (error) {
       errorMessage = "A network error occured, please check your connection";
     }

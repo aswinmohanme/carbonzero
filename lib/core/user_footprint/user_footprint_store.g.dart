@@ -9,6 +9,12 @@ part of 'user_footprint_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars
 
 mixin _$UserFootprintStore on _UserFootprintStore, Store {
+  Computed<bool> _$hasDefaultBehavioursComputed;
+
+  @override
+  bool get hasDefaultBehaviours => (_$hasDefaultBehavioursComputed ??=
+          Computed<bool>(() => super.hasDefaultBehaviours))
+      .value;
   Computed<bool> _$hasResultsComputed;
 
   @override
@@ -19,6 +25,12 @@ mixin _$UserFootprintStore on _UserFootprintStore, Store {
   @override
   bool get hasErrorOccured => (_$hasErrorOccuredComputed ??=
           Computed<bool>(() => super.hasErrorOccured))
+      .value;
+  Computed<dynamic> _$currentFootprintComputed;
+
+  @override
+  dynamic get currentFootprint => (_$currentFootprintComputed ??=
+          Computed<dynamic>(() => super.currentFootprint))
       .value;
 
   final _$defaultBehavioursAtom =
@@ -37,6 +49,23 @@ mixin _$UserFootprintStore on _UserFootprintStore, Store {
       super.defaultBehaviours = value;
       _$defaultBehavioursAtom.reportChanged();
     }, _$defaultBehavioursAtom, name: '${_$defaultBehavioursAtom.name}_set');
+  }
+
+  final _$resultsAtom = Atom(name: '_UserFootprintStore.results');
+
+  @override
+  ObservableMap<String, dynamic> get results {
+    _$resultsAtom.context.enforceReadPolicy(_$resultsAtom);
+    _$resultsAtom.reportObserved();
+    return super.results;
+  }
+
+  @override
+  set results(ObservableMap<String, dynamic> value) {
+    _$resultsAtom.context.conditionallyRunInAction(() {
+      super.results = value;
+      _$resultsAtom.reportChanged();
+    }, _$resultsAtom, name: '${_$resultsAtom.name}_set');
   }
 
   final _$errorMessageAtom = Atom(name: '_UserFootprintStore.errorMessage');
@@ -80,5 +109,12 @@ mixin _$UserFootprintStore on _UserFootprintStore, Store {
   Future fetchDefaultBehaviours() {
     return _$fetchDefaultBehavioursAsyncAction
         .run(() => super.fetchDefaultBehaviours());
+  }
+
+  final _$fetchResultsAsyncAction = AsyncAction('fetchResults');
+
+  @override
+  Future fetchResults() {
+    return _$fetchResultsAsyncAction.run(() => super.fetchResults());
   }
 }
