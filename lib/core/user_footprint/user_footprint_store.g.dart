@@ -9,12 +9,12 @@ part of 'user_footprint_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars
 
 mixin _$UserFootprintStore on _UserFootprintStore, Store {
-  Computed<bool> _$hasDefaultBehavioursComputed;
+  Computed<bool> _$hasBehavioursComputed;
 
   @override
-  bool get hasDefaultBehaviours => (_$hasDefaultBehavioursComputed ??=
-          Computed<bool>(() => super.hasDefaultBehaviours))
-      .value;
+  bool get hasBehaviours =>
+      (_$hasBehavioursComputed ??= Computed<bool>(() => super.hasBehaviours))
+          .value;
   Computed<bool> _$hasResultsComputed;
 
   @override
@@ -33,22 +33,21 @@ mixin _$UserFootprintStore on _UserFootprintStore, Store {
           Computed<dynamic>(() => super.currentFootprint))
       .value;
 
-  final _$defaultBehavioursAtom =
-      Atom(name: '_UserFootprintStore.defaultBehaviours');
+  final _$behavioursAtom = Atom(name: '_UserFootprintStore.behaviours');
 
   @override
-  ObservableMap<String, dynamic> get defaultBehaviours {
-    _$defaultBehavioursAtom.context.enforceReadPolicy(_$defaultBehavioursAtom);
-    _$defaultBehavioursAtom.reportObserved();
-    return super.defaultBehaviours;
+  ObservableMap<String, dynamic> get behaviours {
+    _$behavioursAtom.context.enforceReadPolicy(_$behavioursAtom);
+    _$behavioursAtom.reportObserved();
+    return super.behaviours;
   }
 
   @override
-  set defaultBehaviours(ObservableMap<String, dynamic> value) {
-    _$defaultBehavioursAtom.context.conditionallyRunInAction(() {
-      super.defaultBehaviours = value;
-      _$defaultBehavioursAtom.reportChanged();
-    }, _$defaultBehavioursAtom, name: '${_$defaultBehavioursAtom.name}_set');
+  set behaviours(ObservableMap<String, dynamic> value) {
+    _$behavioursAtom.context.conditionallyRunInAction(() {
+      super.behaviours = value;
+      _$behavioursAtom.reportChanged();
+    }, _$behavioursAtom, name: '${_$behavioursAtom.name}_set');
   }
 
   final _$resultsAtom = Atom(name: '_UserFootprintStore.results');
@@ -102,13 +101,11 @@ mixin _$UserFootprintStore on _UserFootprintStore, Store {
     }, _$isLoadingAtom, name: '${_$isLoadingAtom.name}_set');
   }
 
-  final _$fetchDefaultBehavioursAsyncAction =
-      AsyncAction('fetchDefaultBehaviours');
+  final _$fetchBehavioursAsyncAction = AsyncAction('fetchBehaviours');
 
   @override
-  Future fetchDefaultBehaviours() {
-    return _$fetchDefaultBehavioursAsyncAction
-        .run(() => super.fetchDefaultBehaviours());
+  Future fetchBehaviours() {
+    return _$fetchBehavioursAsyncAction.run(() => super.fetchBehaviours());
   }
 
   final _$fetchResultsAsyncAction = AsyncAction('fetchResults');

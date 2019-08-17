@@ -7,7 +7,7 @@ class UserFootprintStore = _UserFootprintStore with _$UserFootprintStore;
 
 abstract class _UserFootprintStore with Store {
   @observable
-  ObservableMap<String, dynamic> defaultBehaviours = emptyResponse;
+  ObservableMap<String, dynamic> behaviours = emptyResponse;
   @observable
   ObservableMap<String, dynamic> results = emptyResponse;
 
@@ -17,37 +17,28 @@ abstract class _UserFootprintStore with Store {
   bool isLoading = false;
 
   @computed
-  bool get hasDefaultBehaviours => defaultBehaviours != emptyResponse;
+  bool get hasBehaviours => behaviours != emptyResponse;
   @computed
   bool get hasResults => results != emptyResponse;
   @computed
   bool get hasErrorOccured => errorMessage.isNotEmpty;
 
   @computed
-  get currentFootprint {
-    return hasResults ? results["result_grand_total"] : "-1.0";
-  }
+  get currentFootprint => results["result_grand_total"];
 
   @action
-  fetchDefaultBehaviours() async {
-    isLoading = true;
-    try {
-      final defaultBehavioursHashMap =
-          await ApiService.getDefaultResultsForDefaultLocation();
-      defaultBehaviours =
-          ObservableMap.linkedHashMapFrom(defaultBehavioursHashMap);
-    } catch (error) {
-      errorMessage = "A network error occured, please check your connection";
-    }
-    isLoading = false;
+  fetchBehaviours() async {
+    final behavioursHashMap =
+        await ApiService.getDefaultResultsForDefaultLocation();
+    behaviours = ObservableMap.linkedHashMapFrom(behavioursHashMap);
   }
 
   @action
   fetchResults() async {
     isLoading = true;
-    if (!hasDefaultBehaviours) await fetchDefaultBehaviours();
     try {
-      final resultsHashMap = await ApiService.getResults(defaultBehaviours);
+      if (!hasBehaviours) await fetchBehaviours();
+      final resultsHashMap = await ApiService.getResults(behaviours);
       results = ObservableMap.linkedHashMapFrom(resultsHashMap);
     } catch (error) {
       errorMessage = "A network error occured, please check your connection";

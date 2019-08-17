@@ -26,7 +26,7 @@ TextTheme _buildCarbonZeroTextTheme(TextTheme textTheme) {
           display1: textTheme.display1.copyWith(fontSize: text_xl),
           display2: textTheme.display2.copyWith(fontSize: text_2xl),
           display3: textTheme.display3.copyWith(fontSize: text_3xl))
-      .apply(fontFamily: 'Jost');
+      .apply(fontFamily: 'SpaceGrotesk');
 }
 
 ThemeData _buildCarbonZeroThemeLight(ThemeData base) {
