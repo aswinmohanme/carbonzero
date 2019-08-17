@@ -22,10 +22,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var textTheme = Theme.of(context).textTheme;
     return Observer(
       builder: (BuildContext context) => Screen(
         isLoading: userFootprintStore.isLoading,
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -37,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: <Widget>[
                     Text(
                       "tons of CO2/year",
-                      style: Theme.of(context).textTheme.caption,
+                      style: textTheme.caption,
                     ),
                     Container(
                       padding: EdgeInsets.only(top: s_1),
@@ -45,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         builder: (BuildContext context) {
                           return Text(
                             userFootprintStore.currentFootprint,
-                            style: Theme.of(context).textTheme.display3,
+                            style: textTheme.display3,
                           );
                         },
                       ),
@@ -53,7 +55,17 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
               ],
-            )
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(vertical: s_40),
+              child: Center(
+                child: Text("A picture of earth will be here soon"),
+              ),
+            ),
+            Text(
+              "Today",
+              style: textTheme.display2,
+            ),
           ],
         ),
       ),
