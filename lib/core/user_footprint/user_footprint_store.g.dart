@@ -26,6 +26,13 @@ mixin _$UserFootprintStore on _UserFootprintStore, Store {
   bool get hasErrorOccured => (_$hasErrorOccuredComputed ??=
           Computed<bool>(() => super.hasErrorOccured))
       .value;
+  Computed<dynamic> _$actionsFootprintReductionComputed;
+
+  @override
+  dynamic get actionsFootprintReduction =>
+      (_$actionsFootprintReductionComputed ??=
+              Computed<dynamic>(() => super.actionsFootprintReduction))
+          .value;
   Computed<dynamic> _$currentFootprintComputed;
 
   @override

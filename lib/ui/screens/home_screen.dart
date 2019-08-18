@@ -73,10 +73,9 @@ class _HomeScreenState extends State<HomeScreen> {
               ListView.builder(
                 physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
-                itemCount: userFootprintStore.actionsFootprintReduction.length,
+                itemCount: userFootprintStore.actionFootprints.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return Text(
-                      userFootprintStore.actionsFootprintReduction[index]);
+                  return Text(userFootprintStore.actionFootprints[index].label);
                 },
               )
             ],

@@ -1,6 +1,7 @@
 import 'dart:convert';
 
-import 'package:carbon/core/services/api_service.dart';
+import 'package:carbon/core/services/data_service.dart';
+import 'package:carbon/core/user_footprint/action_footprint.dart';
 import 'package:mobx/mobx.dart';
 
 part 'user_footprint_store.g.dart';
@@ -12,6 +13,8 @@ abstract class _UserFootprintStore with Store {
   ObservableMap<String, dynamic> behaviours = emptyResponse;
   @observable
   ObservableMap<String, dynamic> results = emptyResponse;
+  @observable
+  List<ActionFootprint> actionFootprints = [];
 
   @observable
   String errorMessage = "";
@@ -28,14 +31,14 @@ abstract class _UserFootprintStore with Store {
   @computed
   get actionsFootprintReduction => hasResults
       ? json.decode(results["result_takeaction_pounds"]).keys.toList()
-      : {};
+      : [];
   @computed
   get currentFootprint => hasResults ? results["result_grand_total"] : "";
 
   @action
   fetchBehaviours() async {
     final behavioursHashMap =
-        await ApiService.getDefaultResultsForDefaultLocation();
+        await DataService.getDefaultResultsForDefaultLocation();
     behaviours = ObservableMap.linkedHashMapFrom(behavioursHashMap);
   }
 
@@ -46,9 +49,11 @@ abstract class _UserFootprintStore with Store {
 
     try {
       if (!hasBehaviours) await fetchBehaviours();
-      final resultsHashMap = await ApiService.getResults(behaviours);
+      final resultsHashMap = await DataService.getResults(behaviours);
+      actionFootprints = await DataService.getActionDefinitionsFromJson();
       results = ObservableMap.linkedHashMapFrom(resultsHashMap);
     } catch (error) {
+      print(error);
       errorMessage = "A network error occured, please check your connection";
     }
     isLoading = false;
