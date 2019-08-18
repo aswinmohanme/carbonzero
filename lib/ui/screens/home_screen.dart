@@ -29,47 +29,58 @@ class _HomeScreenState extends State<HomeScreen> {
         errorRectifyAction: () {
           userFootprintStore.fetchResults();
         },
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Container(),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: <Widget>[
-                    Text(
-                      "tons of CO2/year",
-                      style: textTheme.caption,
-                    ),
-                    Container(
-                      padding: EdgeInsets.only(top: s_1),
-                      child: Observer(
-                        builder: (BuildContext context) {
-                          return Text(
-                            userFootprintStore.currentFootprint,
-                            style: textTheme.display3,
-                          );
-                        },
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Container(),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: <Widget>[
+                      Text(
+                        "tons of CO2/year",
+                        style: textTheme.caption,
                       ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            Container(
-              padding: EdgeInsets.symmetric(vertical: s_40),
-              child: Center(
-                child: Text("A picture of earth will be here soon"),
+                      Container(
+                        padding: EdgeInsets.only(top: s_1),
+                        child: Observer(
+                          builder: (BuildContext context) {
+                            return Text(
+                              userFootprintStore.currentFootprint,
+                              style: textTheme.display3,
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
-            ),
-            Text(
-              "Actions",
-              style: textTheme.display2,
-            ),
-          ],
+              Container(
+                padding: EdgeInsets.symmetric(vertical: s_40),
+                child: Center(
+                  child: Text("A picture of earth will be here soon"),
+                ),
+              ),
+              Text(
+                "Actions",
+                style: textTheme.display2,
+              ),
+              ListView.builder(
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: userFootprintStore.actionsFootprintReduction.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Text(
+                      userFootprintStore.actionsFootprintReduction[index]);
+                },
+              )
+            ],
+          ),
         ),
       ),
     );

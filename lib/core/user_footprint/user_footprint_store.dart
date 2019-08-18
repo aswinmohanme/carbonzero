@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:carbon/core/services/api_service.dart';
 import 'package:mobx/mobx.dart';
 
@@ -23,6 +25,10 @@ abstract class _UserFootprintStore with Store {
   @computed
   bool get hasErrorOccured => errorMessage.isNotEmpty;
 
+  @computed
+  get actionsFootprintReduction => hasResults
+      ? json.decode(results["result_takeaction_pounds"]).keys.toList()
+      : {};
   @computed
   get currentFootprint => hasResults ? results["result_grand_total"] : "";
 

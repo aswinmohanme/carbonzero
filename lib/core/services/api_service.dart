@@ -1,5 +1,5 @@
 import 'package:carbon/core/services/coolclimate_api.dart';
-import 'package:mobx/src/api/observable_collections.dart';
+import 'package:mobx/mobx.dart';
 
 class ApiService {
   static Future<Map<String, dynamic>>
