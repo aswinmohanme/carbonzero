@@ -10,7 +10,7 @@ class ActionFootprint {
   ActionFootprint.fromJson(Map<String, dynamic> json) {
     datakey = json["key"];
     label = json["label"];
-    fact = json["fact"];
+    fact = json["fact"] != null ? json["fact"] : "";
     footprint_reduction_potential = json["footprint_reduction_potential"];
   }
 }

@@ -70,14 +70,58 @@ class _HomeScreenState extends State<HomeScreen> {
                 "Actions",
                 style: textTheme.display2,
               ),
-              ListView.builder(
-                physics: NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: userFootprintStore.actionFootprints.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return Text(
-                      "${userFootprintStore.actionFootprints[index].label} - ${userFootprintStore.actionFootprints[index].footprint_reduction_potential}");
-                },
+              Container(
+                margin: EdgeInsets.only(top: s_4),
+                child: ListView.builder(
+                  physics: NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: userFootprintStore.actionFootprints.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    var actionFootprint =
+                        userFootprintStore.actionFootprints[index];
+                    return Card(
+                      elevation: 0,
+                      margin:
+                          EdgeInsets.symmetric(vertical: s_3, horizontal: s_1),
+                      child: Container(
+                        padding: EdgeInsets.symmetric(
+                            vertical: s_5, horizontal: s_3),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Flexible(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Text(
+                                    actionFootprint.label,
+                                    style: textTheme.display1,
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.only(top: s_1),
+                                    child: Text(
+                                      actionFootprint.fact,
+                                      style: textTheme.subtitle,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              padding: EdgeInsets.all(s_2),
+                              child: Center(
+                                child: Text(
+                                    "- ${actionFootprint.footprint_reduction_potential.toString()}"),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                ),
               )
             ],
           ),
