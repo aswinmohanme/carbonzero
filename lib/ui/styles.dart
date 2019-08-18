@@ -9,6 +9,10 @@ Color darkColor = Colors.black;
 Color grayDarkText = Color(0xff718096);
 Color grayLightText = Color(0xffF7FAFC);
 
+Color carbonZeroPrimaryColorLight = Color(0xff48BB78);
+Color carbonZeroBackgroundColorLight = Color(0xffF0FFF4);
+Color carbonZeroAccentColorLight = Color(0xff48BB78);
+
 // Spacing Rules
 const double s_0 = 0.0;
 const double s_1 = 0.25 * rem;

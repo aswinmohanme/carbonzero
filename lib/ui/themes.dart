@@ -35,6 +35,7 @@ ThemeData _buildCarbonZeroThemeLight(ThemeData base) {
       brightness: Brightness.light,
       unselectedWidgetColor: darkColor,
       primaryColor: darkColor,
+      scaffoldBackgroundColor: lightColor,
       accentColor: darkColor,
       hintColor: darkColor,
       backgroundColor: lightColor,

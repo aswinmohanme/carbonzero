@@ -81,11 +81,14 @@ class _HomeScreenState extends State<HomeScreen> {
                         userFootprintStore.actionFootprints[index];
                     return Card(
                       elevation: 0,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(s_1),
+                          side: BorderSide(color: Colors.grey)),
                       margin:
-                          EdgeInsets.symmetric(vertical: s_3, horizontal: s_1),
+                          EdgeInsets.symmetric(vertical: s_3, horizontal: s_0),
                       child: Container(
                         padding: EdgeInsets.symmetric(
-                            vertical: s_5, horizontal: s_3),
+                            vertical: s_5, horizontal: s_4),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
