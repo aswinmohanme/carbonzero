@@ -75,7 +75,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 shrinkWrap: true,
                 itemCount: userFootprintStore.actionFootprints.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return Text(userFootprintStore.actionFootprints[index].label);
+                  return Text(
+                      "${userFootprintStore.actionFootprints[index].label} - ${userFootprintStore.actionFootprints[index].footprint_reduction_potential}");
                 },
               )
             ],

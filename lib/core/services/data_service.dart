@@ -23,14 +23,19 @@ class DataService {
     return resultsResponse["response"];
   }
 
-  static getActionDefinitionsFromJson() async {
+  static getActionDefinitionsFromJson(
+      Map<String, dynamic> footprintReductionPotential) async {
     var actionDefinitions =
         await rootBundle.loadString('assets/data/actions_definition.json');
     Map<String, dynamic> actionsDefinitionsJson =
         await json.decode(actionDefinitions);
     return actionsDefinitionsJson.entries
-        .map((action) =>
-            ActionFootprint.fromJson({"key": action.key, ...action.value}))
+        .map((action) => ActionFootprint.fromJson({
+              "key": action.key,
+              ...action.value,
+              "footprint_reduction_potential":
+                  footprintReductionPotential[action.key]
+            }))
         .toList();
   }
 }

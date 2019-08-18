@@ -29,9 +29,8 @@ abstract class _UserFootprintStore with Store {
   bool get hasErrorOccured => errorMessage.isNotEmpty;
 
   @computed
-  get actionsFootprintReduction => hasResults
-      ? json.decode(results["result_takeaction_pounds"]).keys.toList()
-      : [];
+  get actionsFootprintReduction =>
+      hasResults ? json.decode(results["result_takeaction_pounds"]) : [];
   @computed
   get currentFootprint => hasResults ? results["result_grand_total"] : "";
 
@@ -50,8 +49,9 @@ abstract class _UserFootprintStore with Store {
     try {
       if (!hasBehaviours) await fetchBehaviours();
       final resultsHashMap = await DataService.getResults(behaviours);
-      actionFootprints = await DataService.getActionDefinitionsFromJson();
       results = ObservableMap.linkedHashMapFrom(resultsHashMap);
+      actionFootprints = await DataService.getActionDefinitionsFromJson(
+          actionsFootprintReduction);
     } catch (error) {
       print(error);
       errorMessage = "A network error occured, please check your connection";
