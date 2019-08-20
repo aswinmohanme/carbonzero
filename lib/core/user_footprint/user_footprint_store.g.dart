@@ -74,6 +74,24 @@ mixin _$UserFootprintStore on _UserFootprintStore, Store {
     }, _$resultsAtom, name: '${_$resultsAtom.name}_set');
   }
 
+  final _$actionFootprintsAtom =
+      Atom(name: '_UserFootprintStore.actionFootprints');
+
+  @override
+  List<ActionFootprint> get actionFootprints {
+    _$actionFootprintsAtom.context.enforceReadPolicy(_$actionFootprintsAtom);
+    _$actionFootprintsAtom.reportObserved();
+    return super.actionFootprints;
+  }
+
+  @override
+  set actionFootprints(List<ActionFootprint> value) {
+    _$actionFootprintsAtom.context.conditionallyRunInAction(() {
+      super.actionFootprints = value;
+      _$actionFootprintsAtom.reportChanged();
+    }, _$actionFootprintsAtom, name: '${_$actionFootprintsAtom.name}_set');
+  }
+
   final _$errorMessageAtom = Atom(name: '_UserFootprintStore.errorMessage');
 
   @override
