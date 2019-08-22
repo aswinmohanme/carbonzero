@@ -21,33 +21,6 @@ class Screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: screenIndex,
-        backgroundColor: Theme.of(context).primaryColor,
-        selectedItemColor: Theme.of(context).backgroundColor,
-        unselectedItemColor: Theme.of(context).backgroundColor,
-        showSelectedLabels: false,
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-              icon: Icon(Typicons.news),
-              title: Padding(
-                padding: const EdgeInsets.all(s_1),
-                child: Text("Feed"),
-              )),
-          BottomNavigationBarItem(
-              icon: Icon(Typicons.compass),
-              title: Padding(
-                padding: const EdgeInsets.all(s_1),
-                child: Text("Home"),
-              )),
-          BottomNavigationBarItem(
-              icon: Icon(Typicons.user_outline),
-              title: Padding(
-                padding: const EdgeInsets.all(s_1),
-                child: Text("Profile"),
-              )),
-        ],
-      ),
       body: SafeArea(
         child: Container(
           padding: EdgeInsets.all(s_8),
@@ -76,6 +49,23 @@ class Screen extends StatelessWidget {
                   ],
                 ),
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: screenIndex,
+        backgroundColor: Theme.of(context).primaryColor,
+        selectedItemColor: Theme.of(context).backgroundColor,
+        unselectedItemColor: Theme.of(context).backgroundColor,
+        showSelectedLabels: false,
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+              icon: Icon(Typicons.infinity), title: Text("Feed")),
+          BottomNavigationBarItem(
+              backgroundColor: Theme.of(context).backgroundColor,
+              icon: Icon(Typicons.compass),
+              title: Text("Home")),
+          BottomNavigationBarItem(
+              icon: Icon(Typicons.news), title: Text("News")),
+        ],
       ),
     );
   }
