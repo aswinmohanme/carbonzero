@@ -117,7 +117,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               padding: EdgeInsets.all(s_2),
                               child: Center(
                                 child: Text(
-                                    "- ${actionFootprint.footprint_reduction_potential.toString()}"),
+                                    "-${actionFootprint.footprintReductionPotential}"),
                               ),
                             ),
                           ],
