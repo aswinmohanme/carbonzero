@@ -1,4 +1,5 @@
 import 'package:carbon/ui/screens/home_screen.dart';
+import 'package:carbon/ui/screens/news_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -8,6 +9,9 @@ class Router {
       case '/':
         return MaterialPageRoute(
             builder: (BuildContext context) => HomeScreen());
+      case '/news':
+        return MaterialPageRoute(
+            builder: (BuildContext context) => NewsScreen());
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(
