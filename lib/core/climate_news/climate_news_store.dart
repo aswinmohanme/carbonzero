@@ -17,9 +17,12 @@ abstract class _ClimateNewsStore with Store {
 
   @computed
   get newsItems => _rssFeed?.items ?? [];
+  @computed
+  get hasNews => _rssFeed != null;
 
   @action
   fetchNewsRss() async {
+    if (hasNews) return;
     isLoading = true;
     errorMessage = "";
 
