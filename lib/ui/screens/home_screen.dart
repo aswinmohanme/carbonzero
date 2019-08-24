@@ -91,7 +91,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         margin: EdgeInsets.only(top: s_8),
                         child: Text(
                           "Actions",
-                          style: textTheme.display2,
+                          style: textTheme.display1
+                              .copyWith(fontWeight: FontWeight.bold),
                         ),
                       ),
                       Container(
