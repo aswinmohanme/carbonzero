@@ -10,17 +10,13 @@ class Router extends StatefulWidget {
 
 class _RouterState extends State<Router> {
   int currentScreenIndex = 1;
-  final screens = [HomeScreen(), HomeScreen(), NewsScreen()];
+  final screens = [HomeScreen(), HomeScreen(), NewsScreen(), NewsScreen()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: screens[currentScreenIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentScreenIndex,
-        backgroundColor: Theme.of(context).primaryColor,
-        selectedItemColor: Theme.of(context).backgroundColor,
-        unselectedItemColor: Theme.of(context).backgroundColor,
-        showSelectedLabels: false,
         onTap: (int index) {
           setState(() {
             currentScreenIndex = index;
@@ -28,13 +24,33 @@ class _RouterState extends State<Router> {
         },
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-              icon: Icon(Typicons.infinity), title: Text("Feed")),
+              backgroundColor: Theme.of(context).primaryColor,
+              icon: Icon(
+                Typicons.infinity,
+                color: Theme.of(context).backgroundColor,
+              ),
+              title: Text("Feed")),
           BottomNavigationBarItem(
-              backgroundColor: Theme.of(context).backgroundColor,
-              icon: Icon(Typicons.compass),
+              backgroundColor: Theme.of(context).primaryColor,
+              icon: Icon(
+                Typicons.compass,
+                color: Theme.of(context).backgroundColor,
+              ),
               title: Text("Actions")),
           BottomNavigationBarItem(
-              icon: Icon(Typicons.news), title: Text("News")),
+              backgroundColor: Theme.of(context).primaryColor,
+              icon: Icon(
+                Typicons.news,
+                color: Theme.of(context).backgroundColor,
+              ),
+              title: Text("News")),
+          BottomNavigationBarItem(
+              backgroundColor: Theme.of(context).primaryColor,
+              icon: Icon(
+                Typicons.user,
+                color: Theme.of(context).backgroundColor,
+              ),
+              title: Text("Profile")),
         ],
       ),
     );
