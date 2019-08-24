@@ -50,7 +50,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Observer(
                         builder: (BuildContext context) {
                           return Text(
-                            userFootprintStore.currentFootprint,
+                            userFootprintStore.currentFootprint
+                                .toStringAsPrecision(4),
                             style: textTheme.display3,
                           );
                         },
@@ -79,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                             ),
                             Text(
-                              "The Earth if everyone had your carbon footprint.",
+                              "let's save our Earth together before it's too late",
                               style: textTheme.caption,
                               textAlign: TextAlign.center,
                             ),
@@ -89,11 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       Divider(),
                       Container(
                         margin: EdgeInsets.only(top: s_8),
-                        child: Text(
-                          "Actions",
-                          style: textTheme.display1
-                              .copyWith(fontWeight: FontWeight.bold),
-                        ),
+                        child: Text("Actions", style: textTheme.display2),
                       ),
                       Container(
                         margin: EdgeInsets.only(top: s_4),

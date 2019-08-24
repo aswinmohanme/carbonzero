@@ -33,11 +33,11 @@ mixin _$UserFootprintStore on _UserFootprintStore, Store {
       (_$actionsFootprintReductionComputed ??=
               Computed<dynamic>(() => super.actionsFootprintReduction))
           .value;
-  Computed<dynamic> _$currentFootprintComputed;
+  Computed<double> _$currentFootprintComputed;
 
   @override
-  dynamic get currentFootprint => (_$currentFootprintComputed ??=
-          Computed<dynamic>(() => super.currentFootprint))
+  double get currentFootprint => (_$currentFootprintComputed ??=
+          Computed<double>(() => super.currentFootprint))
       .value;
   Computed<dynamic> _$actionsSortedByPotentialComputed;
 

@@ -32,7 +32,8 @@ abstract class _UserFootprintStore with Store {
   get actionsFootprintReduction =>
       hasResults ? json.decode(results["result_takeaction_pounds"]) : [];
   @computed
-  get currentFootprint => hasResults ? results["result_grand_total"] : "";
+  double get currentFootprint =>
+      hasResults ? double.parse(results["result_grand_total"]) : 0.0;
   @computed
   get actionsSortedByPotential => actionFootprints
     ..sort((a, b) =>
