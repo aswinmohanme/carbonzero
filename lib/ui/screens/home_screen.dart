@@ -24,7 +24,6 @@ class _HomeScreenState extends State<HomeScreen> {
     var textTheme = Theme.of(context).textTheme;
     return Observer(
       builder: (BuildContext context) => Screen(
-        screenIndex: 1,
         isLoading: userFootprintStore.isLoading,
         errorMessage: userFootprintStore.errorMessage,
         errorRectifyAction: () {

@@ -21,8 +21,7 @@ class App extends StatelessWidget {
       },
       theme: buildCarbonZeroThemeFromBrightness(
           Theme.of(context).brightness, Theme.of(context)),
-      onGenerateRoute: Router.generateRoute,
-      initialRoute: '/',
+      home: Router(),
     );
   }
 }

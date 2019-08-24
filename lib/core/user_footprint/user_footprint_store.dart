@@ -48,6 +48,7 @@ abstract class _UserFootprintStore with Store {
 
   @action
   fetchResults() async {
+    if (hasResults) return;
     isLoading = true;
     errorMessage = "";
 

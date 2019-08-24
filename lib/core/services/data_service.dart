@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:carbon/core/services/climate_news_api.dart';
 import 'package:carbon/core/services/coolclimate_api.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:mobx/mobx.dart';
@@ -36,5 +37,10 @@ class DataService {
                   footprintReductionPotential[action.key]
             })
         .toList();
+  }
+
+  // Climate News
+  static getClimateNews() async {
+    return await ClimateNewsApi.getLatestClimateNews();
   }
 }
