@@ -16,7 +16,13 @@ abstract class _ClimateNewsStore with Store {
   RssFeed _rssFeed;
 
   @computed
-  get newsItems => _rssFeed?.items ?? [];
+  get newsItems {
+    if (hasNews)
+      return _rssFeed.items;
+    else
+      return [];
+  }
+
   @computed
   get hasNews => _rssFeed != null;
 
