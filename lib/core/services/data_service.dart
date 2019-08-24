@@ -30,12 +30,12 @@ class DataService {
     Map<String, dynamic> actionsDefinitionsJson =
         await json.decode(actionDefinitions);
     return actionsDefinitionsJson.entries
-        .map((action) => ActionFootprint.fromJson({
+        .map((action) => {
               "key": action.key,
               ...action.value,
               "footprint_reduction_potential":
                   footprintReductionPotential[action.key]
-            }))
+            })
         .toList();
   }
 }
