@@ -32,7 +32,7 @@ class _RouterState extends State<Router> {
           BottomNavigationBarItem(
               backgroundColor: Theme.of(context).backgroundColor,
               icon: Icon(Typicons.compass),
-              title: Text("Home")),
+              title: Text("Actions")),
           BottomNavigationBarItem(
               icon: Icon(Typicons.news), title: Text("News")),
         ],
