@@ -73,7 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: <Widget>[
                             Expanded(
                               child: FlareActor(
-                                "assets/flare/earth_bad.flr",
+                                "assets/flare/earth.flr",
                                 animation: "active",
                               ),
                             ),
