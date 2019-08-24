@@ -2,6 +2,7 @@ import 'package:carbon/core/user_footprint/user_footprint_store.dart';
 import 'package:carbon/locator.dart';
 import 'package:carbon/ui/components/screen.dart';
 import 'package:carbon/ui/styles.dart';
+import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
@@ -67,14 +68,29 @@ class _HomeScreenState extends State<HomeScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Container(
-                        padding: EdgeInsets.symmetric(vertical: s_40),
-                        child: Center(
-                          child: Text("A picture of earth will be here soon"),
+                        height: 320,
+                        child: Column(
+                          children: <Widget>[
+                            Expanded(
+                              child: FlareActor(
+                                "assets/flare/earth_bad.flr",
+                                animation: "active",
+                              ),
+                            ),
+                            Text(
+                              "If everyone had your footprint, the earth would be messed up, follow all the actions you can below to save the earth",
+                              style: textTheme.caption,
+                            ),
+                          ],
                         ),
                       ),
-                      Text(
-                        "Actions",
-                        style: textTheme.display2,
+                      Divider(),
+                      Container(
+                        margin: EdgeInsets.only(top: s_8),
+                        child: Text(
+                          "Actions",
+                          style: textTheme.display2,
+                        ),
                       ),
                       Container(
                         margin: EdgeInsets.only(top: s_4),
