@@ -41,7 +41,7 @@ class _NewsScreenState extends State<NewsScreen> {
                 ),
               ),
               Text(
-                "Latest news on Global Warming and Climate Change, published by global media and aggregated by Google.",
+                "Latest news on Global Warming and Climate Change, published by the global media and aggregated by Google",
                 style: textTheme.subtitle,
               ),
               Expanded(
