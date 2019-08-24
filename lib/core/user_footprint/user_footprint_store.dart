@@ -33,6 +33,11 @@ abstract class _UserFootprintStore with Store {
       hasResults ? json.decode(results["result_takeaction_pounds"]) : [];
   @computed
   get currentFootprint => hasResults ? results["result_grand_total"] : "";
+  @computed
+  get actionsSortedByPotential => actionFootprints
+    ..sort((a, b) =>
+        b.footprintReductionPotential.compareTo(a.footprintReductionPotential))
+    ..reversed;
 
   @action
   fetchBehaviours() async {

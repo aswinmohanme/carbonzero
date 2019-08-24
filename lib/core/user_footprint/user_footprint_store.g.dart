@@ -39,6 +39,13 @@ mixin _$UserFootprintStore on _UserFootprintStore, Store {
   dynamic get currentFootprint => (_$currentFootprintComputed ??=
           Computed<dynamic>(() => super.currentFootprint))
       .value;
+  Computed<dynamic> _$actionsSortedByPotentialComputed;
+
+  @override
+  dynamic get actionsSortedByPotential =>
+      (_$actionsSortedByPotentialComputed ??=
+              Computed<dynamic>(() => super.actionsSortedByPotential))
+          .value;
 
   final _$behavioursAtom = Atom(name: '_UserFootprintStore.behaviours');
 

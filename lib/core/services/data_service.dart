@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:carbon/core/services/coolclimate_api.dart';
-import 'package:carbon/core/user_footprint/action_footprint.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:mobx/mobx.dart';
 

@@ -79,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   itemCount: userFootprintStore.actionFootprints.length,
                   itemBuilder: (BuildContext context, int index) {
                     var actionFootprint =
-                        userFootprintStore.actionFootprints[index];
+                        userFootprintStore.actionsSortedByPotential[index];
                     return Card(
                       elevation: 0,
                       shape: RoundedRectangleBorder(
