@@ -4,6 +4,7 @@ import 'package:carbon/ui/components/screen.dart';
 import 'package:carbon/ui/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:webfeed/webfeed.dart';
 
@@ -33,15 +34,21 @@ class _NewsScreenState extends State<NewsScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Container(
-                padding: EdgeInsets.only(bottom: s_6),
+                padding: EdgeInsets.only(bottom: s_4),
                 child: Text(
                   "News",
                   style: textTheme.display2,
                 ),
               ),
+              Text(
+                "Latest news on Global Warming and Climate Change, published by global media and aggregated by Google.",
+                style: textTheme.subtitle,
+              ),
               Expanded(
-                child: ListView.builder(
-                  shrinkWrap: true,
+                child: Swiper(
+                  layout: SwiperLayout.STACK,
+                  itemHeight: 400,
+                  itemWidth: 320,
                   itemCount: climateNewsStore.newsItems.length,
                   itemBuilder: (BuildContext context, int index) {
                     RssItem newsItem = climateNewsStore.newsItems[index];
@@ -49,21 +56,42 @@ class _NewsScreenState extends State<NewsScreen> {
                       onTap: () async {
                         await launch(newsItem.link);
                       },
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(vertical: s_6),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(newsItem.title, style: textTheme.display1),
-                            Container(
-                              padding: EdgeInsets.only(top: s_1),
-                              child: Text(
+                      child: Card(
+                        color: Theme.of(context).primaryColor,
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: s_4, vertical: s_8),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Text(newsItem.title,
+                                      style: textTheme.display3.copyWith(
+                                          color: Theme.of(context)
+                                              .backgroundColor)),
+                                  Container(
+                                    margin: EdgeInsets.only(top: s_4),
+                                    child: Text(
+                                      newsItem.pubDate,
+                                      style: textTheme.body1.copyWith(
+                                          color: Theme.of(context)
+                                              .backgroundColor),
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Text(
                                 newsItem.link,
-                                style: textTheme.subtitle,
+                                style: textTheme.subtitle.copyWith(
+                                    color: Theme.of(context).backgroundColor),
                                 overflow: TextOverflow.ellipsis,
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     );
