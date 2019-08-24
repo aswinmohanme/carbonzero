@@ -27,7 +27,6 @@ class _NewsScreenState extends State<NewsScreen> {
     return Observer(
       builder: (BuildContext context) {
         return Screen(
-          screenIndex: 2,
           isLoading: climateNewsStore.isLoading,
           errorMessage: climateNewsStore.errorMessage,
           child: Column(
