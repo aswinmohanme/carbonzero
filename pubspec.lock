@@ -140,7 +140,7 @@ packages:
       name: csslib
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.16.1"
+    version: "0.15.0"
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -162,6 +162,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.10.9"
+  flare_dart:
+    dependency: transitive
+    description:
+      name: flare_dart
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.4.5"
+  flare_flutter:
+    dependency: "direct main"
+    description:
+      name: flare_flutter
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.5.6"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -220,7 +234,7 @@ packages:
       name: html
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.14.0+2"
+    version: "0.13.4+2"
   http:
     dependency: "direct main"
     description:
@@ -471,6 +485,27 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.6"
+  typicons_flutter:
+    dependency: "direct main"
+    description:
+      name: typicons_flutter
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.2.1"
+  url_launcher:
+    dependency: "direct main"
+    description:
+      name: url_launcher
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "5.1.2"
+  utf:
+    dependency: transitive
+    description:
+      name: utf
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.9.0+5"
   vector_math:
     dependency: transitive
     description:
@@ -492,6 +527,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.15"
+  webfeed:
+    dependency: "direct main"
+    description:
+      name: webfeed
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.4.2"
   xml:
     dependency: transitive
     description:
@@ -515,3 +557,4 @@ packages:
     version: "2.1.16"
 sdks:
   dart: ">=2.4.0 <3.0.0"
+  flutter: ">=1.7.8+hotfix.3 <2.0.0"

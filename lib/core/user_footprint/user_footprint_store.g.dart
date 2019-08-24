@@ -39,6 +39,13 @@ mixin _$UserFootprintStore on _UserFootprintStore, Store {
   dynamic get currentFootprint => (_$currentFootprintComputed ??=
           Computed<dynamic>(() => super.currentFootprint))
       .value;
+  Computed<dynamic> _$actionsSortedByPotentialComputed;
+
+  @override
+  dynamic get actionsSortedByPotential =>
+      (_$actionsSortedByPotentialComputed ??=
+              Computed<dynamic>(() => super.actionsSortedByPotential))
+          .value;
 
   final _$behavioursAtom = Atom(name: '_UserFootprintStore.behaviours');
 
@@ -72,6 +79,24 @@ mixin _$UserFootprintStore on _UserFootprintStore, Store {
       super.results = value;
       _$resultsAtom.reportChanged();
     }, _$resultsAtom, name: '${_$resultsAtom.name}_set');
+  }
+
+  final _$actionFootprintsAtom =
+      Atom(name: '_UserFootprintStore.actionFootprints');
+
+  @override
+  List<ActionFootprint> get actionFootprints {
+    _$actionFootprintsAtom.context.enforceReadPolicy(_$actionFootprintsAtom);
+    _$actionFootprintsAtom.reportObserved();
+    return super.actionFootprints;
+  }
+
+  @override
+  set actionFootprints(List<ActionFootprint> value) {
+    _$actionFootprintsAtom.context.conditionallyRunInAction(() {
+      super.actionFootprints = value;
+      _$actionFootprintsAtom.reportChanged();
+    }, _$actionFootprintsAtom, name: '${_$actionFootprintsAtom.name}_set');
   }
 
   final _$errorMessageAtom = Atom(name: '_UserFootprintStore.errorMessage');
