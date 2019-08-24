@@ -33,6 +33,11 @@ abstract class _UserFootprintStore with Store {
       hasResults ? json.decode(results["result_takeaction_pounds"]) : [];
   @computed
   get currentFootprint => hasResults ? results["result_grand_total"] : "";
+  @computed
+  get actionsSortedByPotential => actionFootprints
+    ..sort((a, b) =>
+        b.footprintReductionPotential.compareTo(a.footprintReductionPotential))
+    ..reversed;
 
   @action
   fetchBehaviours() async {
@@ -50,8 +55,13 @@ abstract class _UserFootprintStore with Store {
       if (!hasBehaviours) await fetchBehaviours();
       final resultsHashMap = await DataService.getResults(behaviours);
       results = ObservableMap.linkedHashMapFrom(resultsHashMap);
-      actionFootprints = await DataService.getActionDefinitionsFromJson(
-          actionsFootprintReduction);
+      final actionFootprintsRaw =
+          await DataService.getActionDefinitionsFromJson(
+              actionsFootprintReduction);
+      actionFootprints = actionFootprintsRaw
+          .map<ActionFootprint>(
+              (action) => ActionFootprint.fromJson({...action}))
+          .toList();
     } catch (error) {
       print(error);
       errorMessage = "A network error occured, please check your connection";

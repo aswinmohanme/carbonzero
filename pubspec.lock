@@ -471,6 +471,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.6"
+  typicons_flutter:
+    dependency: "direct main"
+    description:
+      name: typicons_flutter
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.2.1"
   vector_math:
     dependency: transitive
     description:

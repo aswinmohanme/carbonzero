@@ -1,18 +1,21 @@
 import 'package:carbon/ui/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:typicons_flutter/typicons.dart';
 
 class Screen extends StatelessWidget {
   final Widget child;
   final bool isLoading;
   final String errorMessage;
   final Function errorRectifyAction;
+  final int screenIndex;
 
   const Screen(
       {Key key,
       @required this.child,
       this.isLoading = false,
       this.errorMessage = "",
-      this.errorRectifyAction})
+      this.errorRectifyAction,
+      this.screenIndex})
       : super(key: key);
 
   @override
@@ -46,6 +49,23 @@ class Screen extends StatelessWidget {
                   ],
                 ),
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: screenIndex,
+        backgroundColor: Theme.of(context).primaryColor,
+        selectedItemColor: Theme.of(context).backgroundColor,
+        unselectedItemColor: Theme.of(context).backgroundColor,
+        showSelectedLabels: false,
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+              icon: Icon(Typicons.infinity), title: Text("Feed")),
+          BottomNavigationBarItem(
+              backgroundColor: Theme.of(context).backgroundColor,
+              icon: Icon(Typicons.compass),
+              title: Text("Home")),
+          BottomNavigationBarItem(
+              icon: Icon(Typicons.news), title: Text("News")),
+        ],
       ),
     );
   }

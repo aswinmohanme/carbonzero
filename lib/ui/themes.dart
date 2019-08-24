@@ -39,6 +39,7 @@ ThemeData _buildCarbonZeroThemeLight(ThemeData base) {
       accentColor: darkColor,
       hintColor: darkColor,
       backgroundColor: lightColor,
+      bottomAppBarColor: darkColor,
       textTheme: _buildCarbonZeroTextTheme(base.textTheme)
           .apply(bodyColor: darkColor, displayColor: darkColor));
 }

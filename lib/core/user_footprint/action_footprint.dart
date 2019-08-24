@@ -2,15 +2,16 @@ class ActionFootprint {
   String datakey;
   String label;
   String fact;
-  dynamic footprint_reduction_potential;
+  double footprintReductionPotential;
 
   ActionFootprint(
-      this.label, this.fact, this.datakey, this.footprint_reduction_potential);
+      this.label, this.fact, this.datakey, this.footprintReductionPotential);
 
   ActionFootprint.fromJson(Map<String, dynamic> json) {
     datakey = json["key"];
     label = json["label"];
-    fact = json["fact"] != null ? json["fact"] : "";
-    footprint_reduction_potential = json["footprint_reduction_potential"];
+    fact = json["fact"] ?? "";
+    footprintReductionPotential =
+        json["footprint_reduction_potential"].toDouble() ?? 0.0;
   }
 }

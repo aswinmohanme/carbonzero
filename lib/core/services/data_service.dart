@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:carbon/core/services/coolclimate_api.dart';
-import 'package:carbon/core/user_footprint/action_footprint.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:mobx/mobx.dart';
 
@@ -30,12 +29,12 @@ class DataService {
     Map<String, dynamic> actionsDefinitionsJson =
         await json.decode(actionDefinitions);
     return actionsDefinitionsJson.entries
-        .map((action) => ActionFootprint.fromJson({
+        .map((action) => {
               "key": action.key,
               ...action.value,
               "footprint_reduction_potential":
                   footprintReductionPotential[action.key]
-            }))
+            })
         .toList();
   }
 }
