@@ -70,6 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       Container(
                         height: 320,
                         child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
                             Expanded(
                               child: FlareActor(
@@ -78,8 +79,9 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                             ),
                             Text(
-                              "If everyone had your footprint, the earth would be messed up, follow all the actions you can below to save the earth",
+                              "The Earth if everyone had your carbon footprint.",
                               style: textTheme.caption,
+                              textAlign: TextAlign.center,
                             ),
                           ],
                         ),
@@ -110,7 +112,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   vertical: s_3, horizontal: s_0),
                               child: Container(
                                 padding: EdgeInsets.symmetric(
-                                    vertical: s_5, horizontal: s_4),
+                                    vertical: s_5, horizontal: s_3),
                                 child: Row(
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   mainAxisAlignment:

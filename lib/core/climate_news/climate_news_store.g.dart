@@ -14,6 +14,11 @@ mixin _$ClimateNewsStore on _ClimateNewsStore, Store {
   @override
   dynamic get newsItems =>
       (_$newsItemsComputed ??= Computed<dynamic>(() => super.newsItems)).value;
+  Computed<dynamic> _$hasNewsComputed;
+
+  @override
+  dynamic get hasNews =>
+      (_$hasNewsComputed ??= Computed<dynamic>(() => super.hasNews)).value;
 
   final _$isLoadingAtom = Atom(name: '_ClimateNewsStore.isLoading');
 
